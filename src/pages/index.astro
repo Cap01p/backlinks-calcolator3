@@ -1,0 +1,132 @@
+---
+import BacklinksCalculator from '../components/BacklinksCalculator.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>BackLinks Calculator | Free Backlink Checker Tool</title>
+		<meta name="description" content="Use our free backlinks calculator to analyze your backlink profile, check domain authority, and improve your SEO strategy with our comprehensive backlink checker tool." />
+		<meta name="keywords" content="backlinks, backlinking, inbound links, link building, backlinks calculator, backlink analysis, backlink checker, high-quality backlinks, dofollow backlink, link profile" />
+	</head>
+	<body class="bg-white flex flex-col min-h-screen">
+		<header class="bg-black text-white py-6">
+			<div class="container mx-auto px-4">
+				<div class="flex justify-between items-center">
+					<h1 class="text-4xl font-bold">BackLinks <span class="text-red-600">Calculator</span></h1>
+					<nav class="space-x-6">
+						<a href="#tool" class="hover:text-red-600 transition duration-300">Tool</a>
+						<a href="#about" class="hover:text-red-600 transition duration-300">About</a>
+						<a href="#faq" class="hover:text-red-600 transition duration-300">FAQ</a>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<main class="flex-grow container mx-auto px-4 py-12">
+			<section id="tool" class="mb-16">
+				<h2 class="text-3xl font-bold mb-6 text-black">Free Backlink Checker Tool</h2>
+				<BacklinksCalculator />
+			</section>
+
+			<section id="about" class="mb-16">
+				<h2 class="text-3xl font-bold mb-6 text-black">About Backlinks</h2>
+				<p class="mb-6 text-gray-800">Backlinks, also known as inbound links or incoming links, are links from one website to a page on another website. They are crucial for SEO and serve as "votes of confidence" from other websites. Our backlink analysis tool helps you understand your backlink profile and improve your link building strategy.</p>
+				
+				<h3 class="text-2xl font-bold mb-4 text-black">Key Facts about Backlinks:</h3>
+				<ul class="list-disc pl-5 mb-6 text-gray-800 space-y-2">
+					<li>Backlinks are a major ranking factor for search engines.</li>
+					<li>Quality is more important than quantity when it comes to backlinks.</li>
+					<li>High-quality backlinks from authoritative sites carry more weight.</li>
+					<li>Diverse backlink sources can improve your SEO performance.</li>
+					<li>Dofollow backlinks pass link equity, while nofollow links typically don't.</li>
+					<li>Fresh backlinks can signal relevance to search engines.</li>
+					<li>A natural backlink profile includes a mix of dofollow and nofollow links.</li>
+					<li>Contextual backlinks (links within content) are often more valuable than navigational links.</li>
+					<li>The anchor text of backlinks can influence how search engines understand your content.</li>
+					<li>Backlinks from relevant websites in your industry are particularly valuable.</li>
+				</ul>
+
+				<h3 class="text-2xl font-bold mb-4 text-black">Benefits of Using a Backlink Checker Tool:</h3>
+				<ul class="list-disc pl-5 mb-6 text-gray-800 space-y-2">
+					<li>Analyze your current backlink profile in detail</li>
+					<li>Identify valuable backlinks and new link opportunities</li>
+					<li>Detect potentially harmful or spam backlinks</li>
+					<li>Monitor new backlinks and track your link building progress</li>
+					<li>Perform competitor backlink audits to inform your strategy</li>
+					<li>Discover broken backlinks for link recovery</li>
+					<li>Assess the overall health of your backlink profile</li>
+					<li>Identify patterns in your most successful backlinks</li>
+					<li>Track changes in your domain authority over time</li>
+					<li>Export detailed backlink reports for further analysis</li>
+				</ul>
+
+				<h3 class="text-2xl font-bold mb-4 text-black">Link Building Strategies:</h3>
+				<ul class="list-disc pl-5 mb-6 text-gray-800 space-y-2">
+					<li>Create high-quality, shareable content that naturally attracts backlinks</li>
+					<li>Engage in guest blogging on reputable sites in your industry</li>
+					<li>Participate in and host webinars to build relationships and earn links</li>
+					<li>Leverage social media to promote your content and engage with your audience</li>
+					<li>Develop infographics and other visual content that others want to share</li>
+					<li>Participate in industry forums and online communities</li>
+					<li>Offer testimonials to companies you've worked with</li>
+					<li>Create and promote free tools or resources related to your industry</li>
+					<li>Reach out to influencers and thought leaders in your niche</li>
+					<li>Monitor and reclaim unlinked brand mentions</li>
+				</ul>
+			</section>
+
+			<section id="faq" class="mb-16">
+				<h2 class="text-3xl font-bold mb-6 text-black">Frequently Asked Questions</h2>
+				<div class="space-y-6">
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">What is a good number of backlinks?</h4>
+						<p class="text-gray-800">The ideal number of backlinks varies depending on your industry and competition. Focus on quality over quantity, aiming for high-quality backlinks from relevant and authoritative sites. It's more important to have a few strong, relevant backlinks than many low-quality ones.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">How can I get more backlinks?</h4>
+						<p class="text-gray-800">To build backlinks, create high-quality content, engage in guest blogging, participate in webinars, use social media, and network within your industry. Always focus on earning natural, valuable links rather than using manipulative tactics. Consistency and patience are key in building a strong backlink profile.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">Are all backlinks good?</h4>
+						<p class="text-gray-800">No, low-quality or spam backlinks can harm your SEO. It's important to focus on earning natural, high-quality backlinks from reputable sources. Use our backlink checker tool to identify potentially harmful links in your backlink profile. If you find toxic backlinks, consider disavowing them through Google Search Console.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">What's the difference between dofollow and nofollow backlinks?</h4>
+						<p class="text-gray-800">Dofollow backlinks pass link equity and can directly impact your search engine rankings. Nofollow links have a rel="nofollow" attribute and typically don't pass link equity, but they can still be valuable for referral traffic and maintaining a natural link profile. A healthy backlink profile should include both types of links.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">How often should I check my backlinks?</h4>
+						<p class="text-gray-800">It's a good practice to perform a backlink analysis regularly, such as monthly or quarterly. This allows you to monitor new backlinks, identify any potential issues, and track the success of your link building efforts. For larger websites or those in competitive industries, more frequent checks may be beneficial.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">Can I buy backlinks to improve my SEO?</h4>
+						<p class="text-gray-800">Buying backlinks is against Google's Webmaster Guidelines and can result in penalties. Instead, focus on earning backlinks through creating valuable content and building relationships within your industry. Natural link building may take more time, but it's safer and more effective in the long run.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">How do I analyze my competitors' backlinks?</h4>
+						<p class="text-gray-800">Use our backlink checker tool to analyze your competitors' backlink profiles. Look for patterns in the types of sites linking to them, the content that attracts links, and the anchor text used. This can provide valuable insights for your own link building strategy and help you identify potential link opportunities.</p>
+					</div>
+					<div>
+						<h4 class="font-bold text-xl mb-2 text-black">What should I do if I have bad or toxic backlinks?</h4>
+						<p class="text-gray-800">If you identify toxic backlinks, first try to contact the website owners and request removal. If that's not successful, use Google's Disavow Tool to tell Google to ignore these links. Be cautious when disavowing links, as incorrectly disavowing good links can harm your SEO.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="bg-black text-white py-8">
+			<div class="container mx-auto px-4">
+				<p class="text-center">&copy; 2023 BackLinks Calculator. All rights reserved.</p>
+				<p class="text-center mt-2">
+					<a href="#" class="hover:text-red-600 transition duration-300">Privacy Policy</a> | 
+					<a href="#" class="hover:text-red-600 transition duration-300">Terms of Service</a>
+				</p>
+				<p class="text-center mt-4 text-gray-400">Developed by MPG ONE Agency</p>
+			</div>
+		</footer>
+	</body>
+</html>

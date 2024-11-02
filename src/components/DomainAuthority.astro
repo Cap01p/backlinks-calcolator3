@@ -1,0 +1,54 @@
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h3 class="text-2xl font-semibold mb-4">Domain Authority Checker</h3>
+  <p class="mb-4">Check the domain authority of your website.</p>
+  <form id="authority-form" class="mb-4">
+    <input type="url" name="url" placeholder="Enter your domain" class="w-full p-2 border rounded mb-2" required>
+    <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Check Authority</button>
+  </form>
+  <div id="authority-loading" class="hidden">
+    <p>Loading...</p>
+  </div>
+  <div id="authority-result" class="hidden">
+    <h4 class="font-semibold mb-2">Results:</h4>
+    <p>Domain Authority: <span id="domain-authority"></span></p>
+  </div>
+  <div id="authority-error" class="hidden text-red-500 mt-2"></div>
+</div>
+
+<script>
+  const authorityForm = document.getElementById('authority-form');
+  const authorityLoading = document.getElementById('authority-loading');
+  const authorityResult = document.getElementById('authority-result');
+  const authorityError = document.getElementById('authority-error');
+
+  authorityForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = new FormData(e.target).get('url');
+    
+    authorityError.classList.add('hidden');
+    authorityResult.classList.add('hidden');
+    authorityLoading.classList.remove('hidden');
+
+    try {
+      const response = await fetch('/api/domain-authority', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+      
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const data = await response.json();
+      if (data.error) throw new Error(data.error);
+
+      document.getElementById('domain-authority').textContent = data.domainAuthority;
+      
+      authorityResult.classList.remove('hidden');
+    } catch (error) {
+      authorityError.textContent = `Error: ${error.message}`;
+      authorityError.classList.remove('hidden');
+    } finally {
+      authorityLoading.classList.add('hidden');
+    }
+  });
+</script>

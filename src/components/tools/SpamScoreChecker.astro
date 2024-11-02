@@ -1,0 +1,48 @@
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h3 class="text-2xl font-semibold mb-4">Spam Score Checker</h3>
+  <p class="mb-4">Check the spam score and risk level for your domain.</p>
+  <form id="spam-form" class="mb-4">
+    <input type="url" placeholder="Enter your domain" class="w-full p-2 border rounded mb-2" required>
+    <button type="submit" class="w-full bg-red-500 text-white p-2 rounded">Check Spam Score</button>
+  </form>
+  <div id="spam-result" class="hidden">
+    <h4 class="font-semibold mb-2">Results:</h4>
+    <p>Spam Score: <span id="spam-score"></span></p>
+    <p>Risk Level: <span id="risk-level"></span></p>
+    <h5 class="font-semibold mt-2">Flags:</h5>
+    <ul id="spam-flags" class="list-disc pl-5"></ul>
+  </div>
+</div>
+
+<script>
+  const spamForm = document.getElementById('spam-form');
+  const spamResult = document.getElementById('spam-result');
+  const spamScore = document.getElementById('spam-score');
+  const riskLevel = document.getElementById('risk-level');
+  const spamFlags = document.getElementById('spam-flags');
+
+  spamForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const domain = new FormData(e.target).get('url');
+    
+    try {
+      const response = await fetch(`https://moz-da-pa-spam-score.p.rapidapi.com/dapa?domain=${domain}`, {
+        headers: {
+          'x-rapidapi-key': '4dd7a616abmshe432066db06c437p1cea1fjsnb7af23cf2dcf',
+          'x-rapidapi-host': 'moz-da-pa-spam-score.p.rapidapi.com'
+        }
+      });
+      
+      const data = await response.json();
+      
+      spamScore.textContent = data.spam_score;
+      riskLevel.textContent = data.risk_level;
+      spamFlags.innerHTML = data.flags.map(flag => `<li>${flag}</li>`).join('');
+      
+      spamResult.classList.remove('hidden');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while fetching spam score data.');
+    }
+  });
+</script>

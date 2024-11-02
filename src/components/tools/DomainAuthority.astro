@@ -1,0 +1,47 @@
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h3 class="text-2xl font-semibold mb-4">Domain Authority Checker</h3>
+  <p class="mb-4">Check the domain authority and other metrics for your website.</p>
+  <form id="authority-form" class="mb-4">
+    <input type="url" placeholder="Enter your domain" class="w-full p-2 border rounded mb-2" required>
+    <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Check Authority</button>
+  </form>
+  <div id="authority-result" class="hidden">
+    <h4 class="font-semibold mb-2">Results:</h4>
+    <p>Domain Rating: <span id="domain-rating"></span></p>
+    <p>Ahrefs Rank: <span id="ahrefs-rank"></span></p>
+    <p>Trend: <span id="authority-trend"></span></p>
+  </div>
+</div>
+
+<script>
+  const authorityForm = document.getElementById('authority-form');
+  const authorityResult = document.getElementById('authority-result');
+  const domainRating = document.getElementById('domain-rating');
+  const ahrefsRank = document.getElementById('ahrefs-rank');
+  const authorityTrend = document.getElementById('authority-trend');
+
+  authorityForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const domain = new FormData(e.target).get('url');
+    
+    try {
+      const response = await fetch(`https://ahrefs1.p.rapidapi.com/v1/website-authority-checker?url=${domain}`, {
+        headers: {
+          'x-rapidapi-key': '4dd7a616abmshe432066db06c437p1cea1fjsnb7af23cf2dcf',
+          'x-rapidapi-host': 'ahrefs1.p.rapidapi.com'
+        }
+      });
+      
+      const data = await response.json();
+      
+      domainRating.textContent = data.domain_rating;
+      ahrefsRank.textContent = data.ahrefs_rank;
+      authorityTrend.textContent = data.trend;
+      
+      authorityResult.classList.remove('hidden');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while fetching domain authority data.');
+    }
+  });
+</script>

@@ -1,0 +1,54 @@
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <h3 class="text-2xl font-semibold mb-4">Spam Score Checker</h3>
+  <p class="mb-4">Check the spam score of your domain.</p>
+  <form id="spam-form" class="mb-4">
+    <input type="url" name="url" placeholder="Enter your domain" class="w-full p-2 border rounded mb-2" required>
+    <button type="submit" class="w-full bg-red-500 text-white p-2 rounded">Check Spam Score</button>
+  </form>
+  <div id="spam-loading" class="hidden">
+    <p>Loading...</p>
+  </div>
+  <div id="spam-result" class="hidden">
+    <h4 class="font-semibold mb-2">Results:</h4>
+    <p>Spam Score: <span id="spam-score"></span></p>
+  </div>
+  <div id="spam-error" class="hidden text-red-500 mt-2"></div>
+</div>
+
+<script>
+  const spamForm = document.getElementById('spam-form');
+  const spamLoading = document.getElementById('spam-loading');
+  const spamResult = document.getElementById('spam-result');
+  const spamError = document.getElementById('spam-error');
+
+  spamForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const url = new FormData(e.target).get('url');
+    
+    spamError.classList.add('hidden');
+    spamResult.classList.add('hidden');
+    spamLoading.classList.remove('hidden');
+
+    try {
+      const response = await fetch('/api/spam-score', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+      
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const data = await response.json();
+      if (data.error) throw new Error(data.error);
+
+      document.getElementById('spam-score').textContent = data.spamScore !== undefined ? data.spamScore : 'N/A';
+      
+      spamResult.classList.remove('hidden');
+    } catch (error) {
+      spamError.textContent = `Error: ${error.message}`;
+      spamError.classList.remove('hidden');
+    } finally {
+      spamLoading.classList.add('hidden');
+    }
+  });
+</script>
